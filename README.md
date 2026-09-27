@@ -7,7 +7,7 @@ Free, open source community events calendar for Cumberland County, Pennsylvania.
 1. Create a **public** GitHub repository named `cumberland-events` and upload all files, including `.github`.
 2. Set `OWNER` in `config.js` to your GitHub username; if the repository has another name, change `REPO` too. Commit the change.
 3. Under **Settings → Pages**, select **Deploy from a branch**, your default branch, and **/(root)**. GitHub displays the published URL, usually `https://USERNAME.github.io/cumberland-events/`.
-4. Under **Settings → Actions → General → Workflow permissions**, select **Read and write permissions**. Enable Issues under **Settings → General → Features**. If branch protection restricts Actions pushes, allow the workflow's push or use a separate approval process.
+4. Keep the repository’s default workflow permission at **Read repository contents and packages**. The approval workflow requests `contents: write` for its own run. Issues are enabled under **Settings → General → Features**. If branch protection restricts Actions pushes, allow the workflow’s push or use a separate approval process.
 5. Create repository labels `event-submission` and `approved-event` if GitHub has not created them when the first issue is submitted.
 
 ## Submission and moderation
