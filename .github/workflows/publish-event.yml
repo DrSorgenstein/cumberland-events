@@ -1,0 +1,30 @@
+name: Publish approved event
+on:
+  issues:
+    types: [labeled]
+permissions:
+  contents: write
+  issues: read
+concurrency:
+  group: event-publication
+  cancel-in-progress: false
+jobs:
+  publish:
+    if: github.event.label.name == 'approved-event' && contains(github.event.issue.labels.*.name, 'event-submission')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.repository.default_branch }}
+          persist-credentials: true
+      - name: Validate and publish
+        run: python3 scripts/publish_event.py
+      - name: Commit published data
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/events.json
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish event #${{ github.event.issue.number }}"
+            git push
+          fi
