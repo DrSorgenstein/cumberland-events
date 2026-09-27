@@ -1,0 +1,67 @@
+name: Submit an event
+description: Propose a public Cumberland County event for review
+title: "Event: "
+labels: ["event-submission"]
+body:
+  - type: markdown
+    attributes:
+      value: "Events are reviewed before publication. A public event information link is required. Do not include private addresses or personal contact details. Times are in Eastern Time."
+  - type: input
+    id: title
+    attributes:
+      label: Event title
+      placeholder: Community concert
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options: [Arts & Music, Community, Education, Family, Food, Government, Outdoors, Sports, Other]
+    validations:
+      required: true
+  - type: input
+    id: start
+    attributes:
+      label: Start (Eastern Time)
+      description: Use YYYY-MM-DDTHH:MM in 24-hour time.
+      placeholder: "2026-10-15T18:30"
+    validations:
+      required: true
+  - type: input
+    id: end
+    attributes:
+      label: End (Eastern Time)
+      description: Use YYYY-MM-DDTHH:MM in 24-hour time.
+      placeholder: "2026-10-15T20:00"
+    validations:
+      required: true
+  - type: dropdown
+    id: town
+    attributes:
+      label: Town
+      options: [Boiling Springs, Camp Hill, Carlisle, Enola, Lemoyne, Mechanicsburg, Mount Holly Springs, New Cumberland, Newville, Shippensburg, Wormleysburg, Other Cumberland County location]
+    validations:
+      required: true
+  - type: input
+    id: venue
+    attributes:
+      label: Venue or public location
+      placeholder: Downtown public library
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      placeholder: What should attendees know?
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Public event URL
+      description: Link to official event details or organizer's public page (https://).
+      placeholder: https://example.org/event
+    validations:
+      required: true
